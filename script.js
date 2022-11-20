@@ -45,6 +45,11 @@ const inputHandler = (e) => {
         setUpForChain();
     }
 
+    // If AC is pressed, reset all variables to ""
+    if (selection === "AC") {
+        clear();
+    }
+
 
 }
 
@@ -96,20 +101,32 @@ const operate = () => {
         default:
             break;
     }
-    console.log("Answer: " + answer);
+    console.log("Answer: " + roundToTwo(answer));
 }
 
 const setUpForChain = () => {
-    firstInput = answer;
+    firstInput = String(answer);
     answer = "";
     operator = "";
     secondInput = "";
+}
+
+const clear = () => {
+    firstInput = "";
+    secondInput = "";
+    answer = "";
+    operator = "";
 }
 
 for (const button of buttons) {
     button.addEventListener("click", () => {
         inputHandler(button);
     });
+}
+
+// Rounding Algorithm:
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
 }
 
 /*
