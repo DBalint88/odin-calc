@@ -8,10 +8,10 @@ let operator = "";
 let secondInput = "";
 let answer = ""
 
-const add = (a, b) => parseInt(a)+parseInt(b);
-const subtract = (a, b) => a-b;
-const multiply = (a, b) => a*b;
-const divide = (a,b) => a/b;
+const add = (a, b) => parseInt(a) + parseInt(b);
+const subtract = (a, b) => parseInt(a) - parseInt(b);
+const multiply = (a, b) => parseInt(a) * parseInt(b);
+const divide = (a,b) => parseInt(a) / parseInt(b);
 
 const handleInput = (e) => {
     let selection = e.textContent
@@ -32,11 +32,21 @@ const handleInput = (e) => {
         switch (operator) {
             case "+":
                 answer = add(firstInput, secondInput);
-                console.log(answer);
+                break;
+            case "-":
+                answer = subtract(firstInput, secondInput);
+                break;
+            case "*":
+                answer = multiply(firstInput, secondInput);
+                break;
+            case "/":
+                answer = divide(firstInput, secondInput);
+                break;
+            default:
                 break;
         }
+        console.log("Answer: " + answer);
     }
-
 }
 
 for (const button of buttons) {
