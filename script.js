@@ -50,6 +50,11 @@ const inputHandler = (e) => {
         clear();
     }
 
+    // If Back is pressed, pop off the last digit of the input
+    if (selection === "Back") {
+        backButton();
+    }
+
 
 }
 
@@ -128,6 +133,22 @@ for (const button of buttons) {
 function roundToTwo(num) {
     return +(Math.round(num + "e+2")  + "e-2");
 }
+
+const backButton = () => {
+    if (firstInput !== "" && operator === "") {
+        let stringArray = firstInput.split('');
+        stringArray.pop();
+        firstInput = stringArray.join("");
+        console.log(firstInput);
+    }
+    if (operator !== "" && secondInput !== "") {
+        let stringArray = secondInput.split('');
+        stringArray.pop();
+        secondInput = stringArray.join("");
+        console.log(secondInput);
+    }
+}
+
 
 /*
 const handleInput = (e) => {
