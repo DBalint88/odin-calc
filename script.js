@@ -38,6 +38,14 @@ const inputHandler = (e) => {
         console.log(secondInput);
     }
 
+    // If operator IS defined, as well as both inputs, and another operator is selected, solve the existing calc before resetting.
+    if (operator !== "" && firstInput !== "" && secondInput !== "" && operators.includes(selection)) {
+        operate();
+        //updateDisplay
+        setUpForChain();
+        operator = selection;
+    }
+
     // If Enter is pressed, check for validity, perform the calculation, and prep for a calc chain
     if (selection === "Enter") {
         operate();
