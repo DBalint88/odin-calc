@@ -1,5 +1,4 @@
 // Define Constants & Variables
-
 const digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
 const operators = ["+", "-", "*", "/"];
 const buttons = document.getElementsByClassName("button");
@@ -10,11 +9,13 @@ let secondInput = "";
 let answer = ""
 
 
+
 // Define arithmetic functions
 const add = (a, b) => parseInt(a) + parseInt(b);
 const subtract = (a, b) => parseInt(a) - parseInt(b);
 const multiply = (a, b) => parseInt(a) * parseInt(b);
 const divide = (a,b) => parseInt(a) / parseInt(b);
+
 
 
 // Process each type of input, route to the correct function.
@@ -62,9 +63,12 @@ const inputHandler = (e) => {
     if (selection === "Back") {
         backButton();
     }
-
-
 }
+
+
+// The above handler routes to the functions below:
+
+
 
 const buildFirstInput = (digit) => {
     // The user may input one leading zero, but not multiple.
@@ -131,18 +135,8 @@ const clear = () => {
     operator = "";
 }
 
-for (const button of buttons) {
-    button.addEventListener("click", () => {
-        inputHandler(button);
-    });
-}
-
-// Rounding Algorithm:
-function roundToTwo(num) {
-    return +(Math.round(num + "e+2")  + "e-2");
-}
-
 const backButton = () => {
+    // Logic for the back button determines if user is working on first or second input, converts to array, pops, then re-strings.
     if (firstInput !== "" && operator === "") {
         let stringArray = firstInput.split('');
         stringArray.pop();
@@ -158,38 +152,19 @@ const backButton = () => {
 }
 
 
-/*
-const handleInput = (e) => {
-    let selection = e.textContent
-    // If no operator has been entered, selections should be appended to firstInput
-    if (operator === "" & digits.includes(selection)) {
-        firstInput += selection;
-        console.log(firstInput);
-    }
-    if (operators.includes(selection)) {
-        operator = selection;
-        console.log(operator)
-    }
-    if ((operator !== "") & digits.includes(selection)) {
-        secondInput += selection;
-        console.log(secondInput)
-    }
-    if (selection === "Enter") {
-        
-        console.log("Answer: " + answer);
-    }
+
+
+
+// Event Lister for ALL buttons:
+for (const button of buttons) {
+    button.addEventListener("click", () => {
+        inputHandler(button);
+    });
 }
 
 
 
-
-
-
-
-/*
-Event listener hears the click
-handleInput identifies the text content of the button pressed by comparing it with button arrays and updates variables accordingly
-updateDisplay just updates the display
-
-
-*/
+// Rounding Algorithm:
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
+}
