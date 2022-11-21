@@ -137,7 +137,8 @@ const operate = () => {
         return;
     }
     if (operator == "/" && secondInput == "0") {
-        console.log("Cannot divide by zero!!") 
+        answer = "You have begun the end."
+        console.log("don't divide by zero!")
         return;
     }
     switch (operator) {
