@@ -33,6 +33,7 @@ const inputHandler = (e) => {
     if (operators.includes(selection) && secondInput == "") {
         operator = selection;
         console.log(operator);
+        clearCurrentDisplay();
     }
 
     // If operator IS defined, and a digit is selected, build out the second input
@@ -44,16 +45,13 @@ const inputHandler = (e) => {
     // If operator IS defined, as well as both inputs, and another operator is selected, solve the existing calc before resetting.
     if (operator !== "" && firstInput !== "" && secondInput !== "" && operators.includes(selection)) {
         operate();
-        //updateDisplay
         setUpForChain();
         operator = selection;
     }
 
     // If = is pressed, check for validity, perform the calculation, and prep for a calc chain
     if (selection === "=") {
-        operate();
-        //updateDisplay
-        setUpForChain();
+        operate();        setUpForChain();
     }
 
     // If AC is pressed, reset all variables to ""
@@ -73,6 +71,18 @@ const inputHandler = (e) => {
 
 
 
+const updateHistoricalDisplay = () => {
+    
+}
+
+const updateCurrentDisplay = (currentEntry) => {
+    currentDisplay.textContent = currentEntry;
+}
+
+const clearCurrentDisplay = () => {
+    currentDisplay.textContent = "";
+}
+
 const buildFirstInput = (digit) => {
     // The user may input one leading zero, but not multiple.
     if (firstInput === "0" && digit == "0") {
@@ -83,6 +93,7 @@ const buildFirstInput = (digit) => {
         return
     }
     firstInput += digit;
+    updateCurrentDisplay(firstInput);
 }
 
 const buildSecondInput = (digit) => {
@@ -95,6 +106,7 @@ const buildSecondInput = (digit) => {
         return
     }
     secondInput += digit;
+    updateCurrentDisplay(secondInput);
 }
 
 const operate = () => {
@@ -122,6 +134,7 @@ const operate = () => {
             break;
     }
     console.log("Answer: " + roundToTwo(answer));
+    updateCurrentDisplay(answer);
 }
 
 const setUpForChain = () => {
