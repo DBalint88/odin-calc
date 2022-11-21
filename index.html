@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
     <script src="script.js" defer></script>
     <title>Odin Calculator</title>
 </head>
@@ -14,7 +15,10 @@
     </header>
     <main>
         <div id="calc-container">
-            <div id="calc-display"><span id="calc-display-text"></span></div>
+            <div id="calc-display"></span>
+                <div class="display" id="historical-display">123 + 456 =</div>
+                <div class="display" id="current-display">579</div>
+            </div>
             <div class="button">AC</div>
             <div class="button">Back</div>
             <div class="button">/</div>
@@ -30,7 +34,7 @@
             <div class="button">1</div>
             <div class="button">2</div>
             <div class="button">3</div>
-            <div class="button" id="enter-button">Enter</div>
+            <div class="button" id="enter-button">=</div>
             <div class="button" id="zero-button">0</div>
             <div class="button">.</div>
         </div>

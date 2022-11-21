@@ -2,6 +2,8 @@
 const digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
 const operators = ["+", "-", "*", "/"];
 const buttons = document.getElementsByClassName("button");
+const historicalDisplay = document.getElementById("historical-display");
+const currentDisplay = document.getElementById("current-display");
 
 let firstInput = "";
 let operator = "";
@@ -47,8 +49,8 @@ const inputHandler = (e) => {
         operator = selection;
     }
 
-    // If Enter is pressed, check for validity, perform the calculation, and prep for a calc chain
-    if (selection === "Enter") {
+    // If = is pressed, check for validity, perform the calculation, and prep for a calc chain
+    if (selection === "=") {
         operate();
         //updateDisplay
         setUpForChain();
@@ -64,6 +66,7 @@ const inputHandler = (e) => {
         backButton();
     }
 }
+
 
 
 // The above handler routes to the functions below:
