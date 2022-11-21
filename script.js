@@ -34,6 +34,9 @@ const inputHandler = (e) => {
         operator = selection;
         console.log(operator);
         clearCurrentDisplay();
+        clearHistoricalDisplay();
+        updateHistoricalDisplay(firstInput);
+        updateHistoricalDisplay(operator);
     }
 
     // If operator IS defined, and a digit is selected, build out the second input
@@ -42,17 +45,28 @@ const inputHandler = (e) => {
         console.log(secondInput);
     }
 
+    // If = is pressed, check for validity, perform the calculation, and prep for a calc chain
+    if (selection === "=") {
+        operate();
+        console.log("Answer: " + roundToTwo(answer));
+        updateCurrentDisplay(answer);
+        updateHistoricalDisplay(secondInput);
+        updateHistoricalDisplay("=")
+        setUpForChain();
+    }
+
     // If operator IS defined, as well as both inputs, and another operator is selected, solve the existing calc before resetting.
     if (operator !== "" && firstInput !== "" && secondInput !== "" && operators.includes(selection)) {
+        clearHistoricalDisplay();
         operate();
+        updateHistoricalDisplay(answer);
+        updateHistoricalDisplay(selection);
+        clearCurrentDisplay();
         setUpForChain();
         operator = selection;
     }
 
-    // If = is pressed, check for validity, perform the calculation, and prep for a calc chain
-    if (selection === "=") {
-        operate();        setUpForChain();
-    }
+
 
     // If AC is pressed, reset all variables to ""
     if (selection === "AC") {
@@ -71,8 +85,12 @@ const inputHandler = (e) => {
 
 
 
-const updateHistoricalDisplay = () => {
-    
+const updateHistoricalDisplay = (entry) => {
+    if (operators.includes(entry) || entry == "=") {
+        historicalDisplay.textContent += " " + entry + " "
+    } else {
+        historicalDisplay.textContent += entry;
+    }
 }
 
 const updateCurrentDisplay = (currentEntry) => {
@@ -81,6 +99,10 @@ const updateCurrentDisplay = (currentEntry) => {
 
 const clearCurrentDisplay = () => {
     currentDisplay.textContent = "";
+}
+
+const clearHistoricalDisplay = () => {
+    historicalDisplay.textContent = "";
 }
 
 const buildFirstInput = (digit) => {
@@ -94,6 +116,7 @@ const buildFirstInput = (digit) => {
     }
     firstInput += digit;
     updateCurrentDisplay(firstInput);
+
 }
 
 const buildSecondInput = (digit) => {
@@ -133,8 +156,6 @@ const operate = () => {
         default:
             break;
     }
-    console.log("Answer: " + roundToTwo(answer));
-    updateCurrentDisplay(answer);
 }
 
 const setUpForChain = () => {
@@ -149,6 +170,8 @@ const clear = () => {
     secondInput = "";
     answer = "";
     operator = "";
+    historicalDisplay.textContent = "";
+    currentDisplay.textContent = "";
 }
 
 const backButton = () => {

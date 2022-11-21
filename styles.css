@@ -69,3 +69,7 @@ header, footer {
     font-size: 2rem;
 }
 
+#historical-display {
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
