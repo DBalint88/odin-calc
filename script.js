@@ -181,12 +181,14 @@ const backButton = () => {
         let stringArray = firstInput.split('');
         stringArray.pop();
         firstInput = stringArray.join("");
+        updateCurrentDisplay(firstInput);
         console.log(firstInput);
     }
     if (operator !== "" && secondInput !== "") {
         let stringArray = secondInput.split('');
         stringArray.pop();
         secondInput = stringArray.join("");
+        updateCurrentDisplay(secondInput);
         console.log(secondInput);
     }
 }
@@ -202,6 +204,17 @@ for (const button of buttons) {
     });
 }
 
+for (const button of buttons) {
+    button.addEventListener("mousedown", () => {
+        button.style.backgroundColor = "orange";
+    });
+}
+
+for (const button of buttons) {
+    button.addEventListener("mouseup", () => {
+        button.style.backgroundColor = "white";
+    });
+}
 
 
 // Rounding Algorithm:
