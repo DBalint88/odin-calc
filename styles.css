@@ -43,6 +43,7 @@ header, footer {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+    transition: background-color .05s;
 }
 #zero-button {
     grid-row: 6 / 7;

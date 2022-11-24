@@ -211,7 +211,7 @@ for (const button of buttons) {
 }
 
 for (const button of buttons) {
-    button.addEventListener("mouseup", () => {
+    button.addEventListener("transitionend", () => {
         button.style.backgroundColor = "white";
     });
 }
