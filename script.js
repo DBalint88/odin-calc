@@ -114,6 +114,10 @@ const buildFirstInput = (digit) => {
     if (firstInput.includes(".") && digit ==".") {
         return
     }
+    if (firstInput.length >=8) {
+        alert("This calculator can only handle up to 8 digits.")
+        return;
+    }
     firstInput += digit;
     updateCurrentDisplay(firstInput);
 
@@ -127,6 +131,10 @@ const buildSecondInput = (digit) => {
     // if there is already a "." in firstInput, the "." button should be deactivated.
     if (secondInput.includes(".") && digit ==".") {
         return
+    }
+    if (secondInput.length >=8) {
+        alert("This calculator can only handle up to 8 digits.")
+        return;
     }
     secondInput += digit;
     updateCurrentDisplay(secondInput);

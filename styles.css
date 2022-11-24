@@ -43,8 +43,10 @@ header, footer {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    transition: background-color .05s;
+    transition: background-color .08s;
+    user-select: none;
 }
+
 #zero-button {
     grid-row: 6 / 7;
     grid-column: 1 / 3;
@@ -58,16 +60,21 @@ header, footer {
 #calc-display {
     display: grid;
     grid-template-rows: 1fr 2fr;
+    user-select: none;
 }
 
 .display {
     display: flex;
     justify-content: end;
     align-items: center;
+    text-overflow: clip ellipsis;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
 }
 
 #current-display {
     font-size: 2rem;
+
 }
 
 #historical-display {
